@@ -40,3 +40,5 @@ void Print(LIST &L);
 void Free(LIST &L);
 //Sửa phần tử
 bool Replace(LIST &L, int ValueFind, int ValueReplace);
+//Sắp xếp
+void SapXep(LIST &L);
