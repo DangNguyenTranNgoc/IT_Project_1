@@ -53,7 +53,7 @@ void main()
 			break;
 		case 5:
 			cout << "\nXoa phan tu dau danh sach";
-			DelFirst(list);
+			DelLast(list);
 			cout << "\nDanh sach sau khi xoa: " << endl;
 			Print(list);
 			break;

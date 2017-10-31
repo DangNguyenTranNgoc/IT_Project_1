@@ -45,6 +45,7 @@ void AddLast(LIST &L, int value)
 	{
 		L.Last->next = newnode;
 		L.Last = newnode;
+		L.Last->next = L.First;
 	}
 	L.count++;
 }
@@ -64,8 +65,8 @@ void DelFirst(LIST &L)
 		else
 		{
 			L.First = p->next;
-			if (p == L.Last)
-				L.Last->next = L.First;
+			if (L.First == L.Last)
+				L.First = L.Last = NULL;
 		}
 		delete(p);
 	}
@@ -84,6 +85,7 @@ void DelLast(LIST &L)
 			while (p->next != L.Last)
 				p = p->next;
 			L.Last = p;
+			
 			p = p->next;
 			L.Last->next = L.First;
 		}
