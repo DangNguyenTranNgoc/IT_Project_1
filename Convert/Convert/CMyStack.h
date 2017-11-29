@@ -22,6 +22,7 @@ public:
 	friend ostream & operator<<(ostream &out, CMyStack& ms);
 	friend istream & operator>>(istream &in, CMyStack& ms);
 	CMyStack& operator=(const CMyStack& ms);
+	void Init();
 	ptr CreateNode(int value);//Tao node tra ve mot node
 	void Add(int value);//Them phan tu vao stack
 	bool Empty();//Kiem tra rong, tra ve true la rong
@@ -29,6 +30,7 @@ public:
 	int Top();//Lay phan tu dau tien nhung khong xoa, tra ve -1 neu khong lay duoc
 	bool Free();//Giai phong stack, tra ve true neu thanh cong
 	int getSize();//Tra ve so luong phan tu trong stack
+	int getSum();//Tinh tong cac phan tu trong stack
 };
 
 CMyStack::CMyStack()
@@ -121,6 +123,7 @@ void CMyStack::Add(int value)
 		Node->link = _Head;
 		_Head = Node;
 	}
+	_Count++;
 }
 
 bool CMyStack::Empty()
@@ -168,7 +171,30 @@ bool CMyStack::Free()
 	}
 	return false;
 }
+
 int CMyStack::getSize()
 {
 	return _Count;
+}
+
+int CMyStack::getSum()
+{
+	int value = -1;
+	ptr p = _Head;
+	if (p != NULL)
+	{
+		value = 0;
+		while (p != NULL)
+		{
+			value += p->value;
+			p = p->link;
+		}
+	}
+	return value;
+}
+
+void CMyStack::Init()
+{
+	_Head = NULL;
+	_Count = 0;
 }
